@@ -62,7 +62,7 @@ class BSC_Crawler_GUI:
                         file.write(f"{address}\n")
                 self.textbox.insert(tk.END, f"Block: {self.current_block}, Unique Addresses: {len(unique_addresses)}\n")
                 self.textbox.see(tk.END)  # Auto-scroll to the bottom
-                self.current_block += 1
+                self.current_block -= 1
                 sleep_time = float(self.sleep_entry.get()) if self.sleep_entry.get() else 1
                 time.sleep(sleep_time)  # Use user-input sleep time
             except Exception as e:
