@@ -8,12 +8,9 @@ If u have a private endpoint witout limits u can change the endpoint and set del
 
 the code append to the file the new addresses on every block.
 
-when hitting stop button will save a 'Save.txt' that contain the last block number before close.
+when hitting stop button will save a 'Save.txt' that contain the last block number before close.also will load the saved addresses and remove the duplicates from file.
 
 The program will use save file to continue a saved session.
-
-remember to clean the addresses file before usage. it will contain many repeated addresses because the same address can appear in diferent blocks. simply use notepad++ option to remove duplicated lines.
-
 ![crawler](https://github.com/sayajinpt/ETH-BSC-Crawler/assets/61246703/476512a2-43cc-4173-9ab1-301cef15b280)
 
 ###If u find this code is usefull to you consider donation###
