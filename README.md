@@ -1,6 +1,6 @@
 # ETH/BSC_Crawler
 
-Simple Script that starts from the current block and goes back every block saving all active addresses into a txt file. 
+Simple Script that starts from the current block or any especific block if u set inside the Save.txt, and goes back every block saving all active addresses into a txt file. 
 
 As example this code is using a public endpoint rpc "https://bsc-dataseed2.binance.org/", every public endpoint have requests rate limit.
 
