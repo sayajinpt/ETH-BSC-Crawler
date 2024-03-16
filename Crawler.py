@@ -39,7 +39,7 @@ class BSC_Crawler_GUI:
         self.sleep_entry = tk.Entry(master, font=font_style)
         self.sleep_entry.pack()
 
-        self.textbox = tk.Text(master, height=5, width=35, font=font_style)
+        self.textbox = tk.Text(master, height=5, width=30, font=font_style)
         self.textbox.pack()
 
         self.current_block = 0
@@ -57,10 +57,10 @@ class BSC_Crawler_GUI:
             try:
                 transactions = self.web3.eth.get_block(self.current_block)['transactions']
                 unique_addresses = self.get_unique_addresses(transactions)
-                with open(self.file_path, 'a') as file:
+                with open(self.file_path, 'a') as file1:
                     for address in unique_addresses:
-                        file.write(f"{address}\n")
-                self.textbox.insert(tk.END, f"Block: {self.current_block}, Unique Addresses: {len(unique_addresses)}\n")
+                        file1.write(f"{address}\n")
+                self.textbox.insert(tk.END, f"Block: {self.current_block}, Addresses: {len(unique_addresses)}\n")
                 self.textbox.see(tk.END)  # Auto-scroll to the bottom
                 self.current_block -= 1
                 sleep_time = float(self.sleep_entry.get()) if self.sleep_entry.get() else 1
@@ -101,7 +101,15 @@ class BSC_Crawler_GUI:
                 file.write(str(self.current_block))
             self.is_crawling = False
             self.textbox.insert(tk.END, "Crawling stopped. Current block saved.\n")
-            self.textbox.see(tk.END)            # Auto-scroll to the bottom
+            self.textbox.see(tk.END)
+            
+            with open('Addresses.txt', 'r') as f:
+                lines = f.readlines()
+                uniqlines = set(lines)
+
+            with open('Addresses.txt', 'w') as result:
+                result.writelines(uniqlines)
+            
             self.master.destroy()
     
     def get_unique_addresses(self, transactions):
@@ -116,4 +124,3 @@ class BSC_Crawler_GUI:
 root = tk.Tk()
 app = BSC_Crawler_GUI(root)
 root.mainloop()
-
